@@ -157,6 +157,35 @@ Specifications enable:
 * Consistent API error responses
 * Custom error models
 * No unhandled exceptions leaking to clients
+  
+---
+
+### 💳 Payments & Stripe Integration
+
+The project includes a **real-world Stripe payment integration** designed with reliability and consistency in mind:
+
+- Stripe **Payment Intents API**
+- Secure webhook handling
+- **Signature verification** to prevent spoofed requests
+- Idempotent payment processing
+- Backend-driven payment state updates
+- Separation between payment logic and domain logic
+  
+---
+
+### 💡 Payment Flow (Stripe)
+
+1. Client requests payment intent from API
+2. Backend creates Stripe PaymentIntent
+3. Client confirms payment using Stripe SDK
+4. Stripe sends webhook event
+5. Backend verifies webhook signature
+6. Order payment status is updated safely
+7. Duplicate events are ignored using idempotency
+
+This ensures the system remains consistent even under retries or network failures.
+
+The payment flow is designed to be **safe against duplicate events**, network retries, and inconsistent client states — matching how payments are handled in production systems.
 
 ---
 
@@ -166,6 +195,7 @@ Specifications enable:
 * **C#**
 * **Entity Framework Core**
 * **Redis (Distributed Caching)**
+* **Stripe API (Payments & Webhooks)**
 * **ASP.NET Identity**
 * **AutoMapper**
 * **Onion Architecture**
@@ -216,6 +246,7 @@ This project demonstrates:
 * Secure authentication with theft detection
 * Clean separation of concerns
 * Enterprise‑style architecture decisions
+* Real payment processing using Stripe with secure webhooks and idempotency
 
 It’s designed to be:
 
