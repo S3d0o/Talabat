@@ -1,0 +1,25 @@
+﻿using Shared.Dtos.Enums;
+
+namespace Shared.Parameters
+{
+    public class ProductSpecificationParameters
+    {
+        public int? TypeId { get; set; }
+        public int? BrandId { get; set; }
+        public ProductSortingOptions? sort { get; set; }
+        public string? Search { get; set; }
+        public int PageIndex { get; set; } = 1;
+
+        private const int MaxPageSize = 10;
+        private const int DefaultPageSize = 5;
+
+        private int _pageSize = DefaultPageSize;
+
+        public int PageSize
+        {
+            get { return _pageSize; }
+            set { _pageSize = value > MaxPageSize ? MaxPageSize : value; }
+        }
+
+    }
+}
